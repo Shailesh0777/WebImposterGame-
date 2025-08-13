@@ -64,6 +64,7 @@ a {
   padding: 10px;
   height: 150px;
   width: 200px;
+  margin-left: 100px;
   /* Default card height */
   display: grid;
   justify-content: center;
@@ -236,3 +237,29 @@ section.texttt {
   position: relative; /* Needed for absolute positioning of delete button */
 }
 
+.imposter-card {
+  background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
+  padding: 15px 00px 00px 20px;
+  height: 60px;
+  width: 50px;
+  margin-left: 100px; 
+  /* Default card height */
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  border-radius: 20px;
+}
+
+.imposter-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgb(117, 100, 90);
+}
+
+@media (max-width: 600px) {
+  .imposter-card {
+    width: 40px;            /* smaller width on mobile */
+    height: 50px;
+    padding-left: 10px;     /* adjust padding */
+  }
+}
