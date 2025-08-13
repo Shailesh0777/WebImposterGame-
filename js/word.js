@@ -184,8 +184,6 @@ const words_with_hints = {
 "tongs": "utensil",
 "tray": "utensil"
 
-
-
 };
 
 function assignWordsToPlayers(players) {
@@ -201,6 +199,7 @@ function assignWordsToPlayers(players) {
     if (player.role.toLowerCase() === "imposter") {
       return {
         ...player,
+
         displayText: `Category : ${category}`
       };
     } else {

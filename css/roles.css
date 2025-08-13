@@ -127,7 +127,7 @@ a{
 }
 
 .next-button {
-  background: linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3));
+  background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,7 +181,7 @@ a{
 }
 
 .revealimposter {
-  background: linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3));
+  background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
   box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.2);
   color: white;
   border: none;
@@ -191,7 +191,7 @@ a{
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 0 8px rgb(247, 134, 5);
+  box-shadow: 0 0 8px rgb(153, 8, 148);
   transition: box-shadow 0.3s ease-in-out;
 }
 

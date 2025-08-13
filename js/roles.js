@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (player.role.toLowerCase() === "imposter") {
         card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
-        card.style.color = "black";
       } else {
         card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
       }
@@ -84,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create "Start round" card
       const startCard = document.createElement("div");
       startCard.classList.add("big-card");
-      startCard.style.background = "linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3))";
+      startCard.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
       startCard.style.color = "white";
       startCard.style.textAlign = "center";
       startCard.style.display = "flex";
@@ -97,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const firstPlayerName = playersWithRoles[0]?.name || "Player 1";
       startCard.innerText = `Start the round from "${firstPlayerName}" in clockwise direction`;
-      startCard.style.boxShadow = "box-shadow: 0 0 25px rgba(255, 60, 60, 1)";
+      startCard.style.boxShadow = "box-shadow: 0 0 25px rgba(167, 30, 177, 1)";
 
       // Reveal Imposter button
       const btn = document.createElement("button");
@@ -130,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
           margin-top: 30px;
           padding: 20px;
           border-radius: 15px;
-          background:linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3));
+          background:linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
           box-shadow: 0 4px 15px rgba(0,0,0,0.2);
           text-align: center;
           font-family: Arial, sans-serif;
