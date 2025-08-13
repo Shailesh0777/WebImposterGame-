@@ -60,11 +60,12 @@ a {
 }
 
 .card {
-  background: linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3));
+  background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
   padding: 10px;
-  height: 220px;
+  height: 150px;
+  width: 200px;
   /* Default card height */
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out;
@@ -132,7 +133,7 @@ section.texttt {
   color: white;
   font-size: 20px;
   font-weight: 600;
-  margin-left: 150px;
+  margin-left: 100px;
 }
 
 
@@ -144,7 +145,7 @@ section.texttt {
 }
 
 .oneword {
-  background: linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3));
+  background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
   background-clip: text;
   color: transparent;
 }
@@ -162,7 +163,7 @@ section.texttt {
 }
 
 .next-button {
-  background: linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3));
+  background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
   display: flex;
   justify-content: center;
   align-items: center;

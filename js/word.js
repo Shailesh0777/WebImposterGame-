@@ -201,12 +201,12 @@ function assignWordsToPlayers(players) {
     if (player.role.toLowerCase() === "imposter") {
       return {
         ...player,
-        displayText: `Category = ${category}`
+        displayText: `Category : ${category}`
       };
     } else {
       return {
         ...player,
-        displayText: `The Word is ${randomWord}`
+        displayText: `Word : ${randomWord}`
       };
     }
   });

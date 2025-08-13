@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   card.appendChild(wordText);
   card.appendChild(roleText);
 
-  card.style.background = "linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3))";
+  card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
   card.style.color = "white";
 
   card.addEventListener("click", () => {
@@ -65,9 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
       revealed = true;
 
       if (player.role.toLowerCase() === "imposter") {
-        card.style.background = "linear-gradient(to right, #ff2209ff, rgba(43, 38, 38, 1))";
+        card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
+        card.style.color = "black";
       } else {
-        card.style.background = "linear-gradient(to right, #00ff6aff, rgba(43, 38, 38, 1))";
+        card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
       }
     }
   });
