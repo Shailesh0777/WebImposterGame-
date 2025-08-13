@@ -1,0 +1,96 @@
+<!-- this is my index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Imposter</title>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="logo"><a href="/"> Imposteur </a></div>
+    </div>
+  </header>
+
+  <!-- Intro text -->
+  <section class="texttt">
+    <p class="in-a-sea">In a sea of Truth,</p>
+    <p class="oneword">One Word whispers a lie....</p>
+  </section>
+
+  <!-- Player section -->
+  <section class="container">
+    <h2>Players</h2>
+    <div class="grid" id="player-cards">
+      <!-- Add Player card -->
+      <div class="card" onclick="addNewPlayerCard()">
+        <div class="card-body">
+          <h5 class="card-title">+ Add Player</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Imposter selection -->
+  <h2 class="imposter-choose">Select The Number of Imposters</h2>
+  <section class="container">
+    <div class="grid" id="imposter-cards">
+      <div class="card imposter-card" data-count="1">
+        <div class="card-body">
+          <h5 class="card-title">One Imposter</h5>
+        </div>
+      </div>
+      <div class="card imposter-card" data-count="2">
+        <div class="card-body">
+          <h5 class="card-title">Two Imposters</h5>
+        </div>
+      </div>
+      <div class="card imposter-card" data-count="3">
+        <div class="card-body">
+          <h5 class="card-title">Three Imposters</h5>
+        </div>
+      </div>
+      <div class="card imposter-card" data-count="4">
+        <div class="card-body">
+          <h5 class="card-title">Four Imposters</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next button -->
+  <div class="next-button-container">
+    <div class="next-button" onclick="goToNextPage()">
+      <div class="card-body">
+        <h5 class="card-title">Next</h5>
+      </div>
+      <div class="icon">➡</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="logo"><span>About Me</span></div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/shailesh.paudel.07" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/shailesh_paudel_07/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
