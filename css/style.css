@@ -31,17 +31,23 @@ a {
 
 .main-header {
   padding: 20px 0;
-  background: #000000
+  background: #000000;
 }
 
 .logo {
   font-size: xx-large;
+  transition: all 0.3s ease-in-out;
+}
+.logo:hover{
+  transform: scale(1.05);
+  text-shadow: 0 0 25px rgba(167, 30, 177, 1);
 }
 
 .main-header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* ✅ Responsive header */
 }
 
 .main-header .logo {
@@ -51,7 +57,7 @@ a {
   color: #fff;
 }
 
-/* Grid Layout */
+/* ✅ Grid Layout for player cards */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -62,68 +68,32 @@ a {
 .card {
   background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
   padding: 10px;
-  height: 150px;
-  width: 200px;
-  margin-left: 50px;
-  /* Default card height */
+  height: 50px;
+  min-width: 200px;
   display: grid;
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out;
   border-radius: 20px;
+  position: relative;
 }
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgb(117, 100, 90);
+  box-shadow: 0 0 25px rgba(167, 30, 177, 1);
 }
 
 .card-title {
   font-size: 20px;
   font-weight: 600;
+  text-align: center;
 }
 
-/* Guess Imposter Section */
 section.texttt {
-  padding: 60px;
+  padding: 60px 20px;
   text-align: center;
   font-size: 24px;
   font-weight: 600;
-}
-
-/* Footer */
-.main-footer {
-  background: #000000;
-  padding: 20px 0;
-  margin-top: 20px;
-}
-
-.main-footer .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.main-footer .logo {
-  font-size: 25px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-.social-links {
-  display: flex;
-  gap: 10px;
-  font-size: 20px;
-}
-
-.social-links a {
-  color: #fff;
-  transition: color 0.3s ease-in-out;
-}
-
-.social-links a:hover {
-  color: var(--color-secondary);
 }
 
 .player-name-input {
@@ -134,10 +104,8 @@ section.texttt {
   color: white;
   font-size: 20px;
   font-weight: 600;
-  margin-left: 100px;
+  text-align: center; /* ✅ Center text for mobile */
 }
-
-
 
 .in-a-sea {
   background: linear-gradient(to right, rgb(68, 66, 66), rgb(250, 252, 252));
@@ -151,16 +119,42 @@ section.texttt {
   color: transparent;
 }
 
+/* ✅ Centered & responsive imposter number buttons */
 .imposter-choose {
   max-width: 1200px;
   margin: 0 auto;
   padding: 100px 20px 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
+.imposter-card {
+  background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
+  height: 40px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.imposter-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(167, 30, 177, 1);
+}
+
+/* ✅ Next Button - Responsive Center */
 .next-button-container {
   display: flex;
   justify-content: center;
-  margin: 80px;
+  margin: 40px 0;
 }
 
 .next-button {
@@ -174,7 +168,6 @@ section.texttt {
   color: #fff;
   border-radius: 10px;
   position: relative;
-  
 }
 
 .icon {
@@ -187,7 +180,7 @@ section.texttt {
 .next-button:hover {
   cursor: pointer;
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgb(117, 100, 90);
+  box-shadow: 0 0 25px rgba(167, 30, 177, 1);
 }
 
 .next-button:hover>div {
@@ -211,6 +204,7 @@ section.texttt {
   margin: 0;
 }
 
+/* Delete Button */
 .delete-btn {
   position: absolute;
   top: 5px;
@@ -226,40 +220,134 @@ section.texttt {
   line-height: 18px;
   text-align: center;
   opacity: 0;
-    pointer-events: none;  /* So clicks pass through when hidden */
+  pointer-events: none;
   transition: opacity 0.3s ease;
 }
-.card:hover .delete-btn{
+
+.card:hover .delete-btn {
   opacity: 1;
   pointer-events: auto;
 }
-.card {
-  position: relative; /* Needed for absolute positioning of delete button */
+
+/* Footer */
+.main-footer {
+  background: #000000;
+  padding: 20px 0;
+  margin-top: 20px;
 }
 
+.main-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* ✅ Responsive footer */
+  gap: 10px;
+}
+
+.main-footer .logo {
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.social-links a {
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+  transform: scale(1.02 );
+  color:orange;
+}
+
+/* ✅ Responsive Breakpoints */
+@media (max-width: 768px) {
+  .card {
+    min-width: 150px;
+  }
+
+  .imposter-card {
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+  }
+
+  section.texttt {
+    font-size: 20px;
+  }
+}
+
+/* Title styling */
+.imposter-choose {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Container for 1, 2, 3, 4 */
+.count-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  padding: 20px;
+}
+
+/* Grid holding the cards */
+#imposter-cards {
+  display: flex; 
+  justify-content: center; /* Center items */
+  align-items: center;     /* Align vertically */
+  flex-wrap: wrap;         /* Wrap on small screens */
+  gap: 15px;               /* Space between cards */
+}
+
+/* Card styles */
 .imposter-card {
   background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
-  padding: 15px 00px 00px 20px;
-  height: 60px;
-  width: 50px;
-  margin-left: 100px; 
-  /* Default card height */
-  display: inline-block;
+  color: white;
+  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease-in-out;
-  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .imposter-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgb(117, 100, 90);
+  box-shadow: 0 0 25px rgba(167, 30, 177, 1);
 }
 
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
   .imposter-card {
-    width: 40px;            /* smaller width on mobile */
-    height: 50px;
-    padding-left: 10px;     /* adjust padding */
+    width: 60px;
+    height: 60px;
+  }
+  .card-title {
+    font-size: 1.2rem;
   }
 }
+
+  .main-header .container,
+  .main-footer .container {
+    flex-direction: column;
+    align-items: center;
+  }

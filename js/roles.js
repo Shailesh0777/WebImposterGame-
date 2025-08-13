@@ -17,63 +17,67 @@ document.addEventListener("DOMContentLoaded", () => {
   let revealed = false;
 
   function createPlayerCard(player) {
-  const card = document.createElement("div");
-  card.classList.add("big-card");
-  card.style.cursor = "pointer";
-  card.style.display = "flex";
-  card.style.flexDirection = "column";
-  card.style.justifyContent = "space-between"; // spread elements
-  card.style.height = "350px";
-  card.style.padding = "20px";
-  card.style.boxSizing = "border-box";
+    const card = document.createElement("div");
+    card.classList.add("big-card");
+    card.style.cursor = "pointer";
+    card.style.display = "flex";
+    card.style.flexDirection = "column";
+    card.style.justifyContent = "space-between";
+    card.style.height = "350px";
+    card.style.padding = "20px";
+    card.style.boxSizing = "border-box";
 
-  const playerName = document.createElement("div");
-  playerName.classList.add("player-name");
-  playerName.innerText = player.name;
-  playerName.style.fontWeight = "bold";
-  playerName.style.fontSize = "18px";
-  playerName.style.textAlign = "center";
+    // Player name at the top
+    const playerName = document.createElement("div");
+    playerName.classList.add("player-name");
+    playerName.innerText = player.name;
+    playerName.style.fontWeight = "bold";
+    playerName.style.fontSize = "18px";
+    playerName.style.textAlign = "center";
 
-  // Word in the middle
-  const wordText = document.createElement("div");
-  wordText.classList.add("word-text");
-  wordText.style.fontSize = "20px";
-  wordText.style.color = "#eee";
-  wordText.style.textAlign = "center";
-  wordText.style.margin = "auto 0"; // center vertically
-  wordText.innerText = ""; // stays empty until revealed
+    // Role / imposter in the middle
+    const roleText = document.createElement("div");
+    roleText.classList.add("role-text");
+    roleText.style.fontSize = "20px";
+    roleText.style.fontWeight = "bold";
+    roleText.style.color = "#eee";
+    roleText.style.textAlign = "center";
+    roleText.style.margin = "auto 0"; // center vertically
+    roleText.innerText = "Tap to reveal"; // default before click
 
-  // Role at the bottom
-  const roleText = document.createElement("div");
-  roleText.classList.add("role-text");
-  roleText.style.fontSize = "18px";
-  roleText.style.fontWeight = "bold";
-  roleText.style.textAlign = "center";
-  roleText.innerText = "Tap to reveal"; // default before click
+    // Category at the bottom
+    const categoryText = document.createElement("div");
+    categoryText.classList.add("category-text");
+    categoryText.style.fontSize = "18px";
+    categoryText.style.fontWeight = "bold";
+    categoryText.style.textAlign = "center";
+    categoryText.innerText = ""; // empty until click
 
-  card.appendChild(playerName);
-  card.appendChild(wordText);
-  card.appendChild(roleText);
+    card.appendChild(playerName);
+    card.appendChild(roleText);
+    card.appendChild(categoryText);
 
-  card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
-  card.style.color = "white";
+    card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
+    card.style.color = "white";
 
-  card.addEventListener("click", () => {
-    if (!revealed) {
-      wordText.innerText = player.displayText.replace("The word is ", "");
-      roleText.innerText = player.role;
-      revealed = true;
-
-      if (player.role.toLowerCase() === "imposter") {
-        card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
-      } else {
+    card.addEventListener("click", () => {
+      if (!revealed) {
+        // Show imposter or civilian
+        if (player.role.toLowerCase() === "imposter") {
+          roleText.innerText = "You are Imposter";
+          categoryText.innerText = player.displayText.replace("Category : ", "Category:\n "); // show category at bottom
+        } else {
+          roleText.innerText = player.displayText.replace("Word : ", "The Word is  :\n "); // middle empty for civilian
+          categoryText.innerText = ""; // show word at bottom
+        }
+        revealed = true;
         card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
       }
-    }
-  });
+    });
 
-  return card;
-}
+    return card;
+  }
+
   function showPlayer(index) {
     container.innerHTML = "";
 
@@ -90,20 +94,22 @@ document.addEventListener("DOMContentLoaded", () => {
       startCard.style.justifyContent = "center";
       startCard.style.alignItems = "center";
       startCard.style.height = "120px";
+      startCard.style.width = "300px";
       startCard.style.fontSize = "20px";
       startCard.style.marginBottom = "20px";
       startCard.style.fontWeight = "600";
-
       const firstPlayerName = playersWithRoles[0]?.name || "Player 1";
       startCard.innerText = `Start the round from "${firstPlayerName}" in clockwise direction`;
       startCard.style.boxShadow = "box-shadow: 0 0 25px rgba(167, 30, 177, 1)";
+      startCard.style.padding = "100px 0px 100px 0px";
+      
 
       // Reveal Imposter button
       const btn = document.createElement("button");
       btn.innerText = "Reveal Imposter";
       btn.classList.add("revealimposter");
       btn.style.display = "block";
-      btn.style.margin = "20px auto";
+      btn.style.margin = "50px auto";
 
       // Glow effect from CSS
       const style = document.createElement("style");
@@ -111,7 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .revealimposter {
           background-color: #ff3c3c;
           color: white;
-          height: 250p
+          height: 75px
+          width:150px
           padding: 15px 30px;
           border: none;
           border-radius: 10px;
@@ -120,28 +127,36 @@ document.addEventListener("DOMContentLoaded", () => {
           transition: all 0.3s ease;
         }
         .revealimposter:hover {
-         box-shadow: 0 0 25px rgb(117, 100, 90);
+        box-shadow: 0 0 25px rgba(167, 30, 177, 1);
           transform: scale(1.05);
         }
 
         .result-card {
-          height: 500px
-          margin-top: 30px;
-          padding: 20px;
+          height: auto;
+          width: auto;
+          padding: 30px 20px 30px 20px;
           border-radius: 15px;
           background:linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
-          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
           text-align: center;
           font-family: Arial, sans-serif;
+          transition: all 0.3s ease;
+          border:none;
+          border-radius:10px
+
         }
         .result-card h2 {
           color: #f8f8f8ff;
-          margin-bottom: 10px;
+          margin-bottom: 250px;
         }
+        .result-card:hover {
+          transform: scale(1.05);
+          box-shadow: 0 0 25px rgba(167, 30, 177, 1);
+        }
+
         .back-btn {
-          margin-top: 20px;
+          margin-top: 40px;
           padding: 10px 20px;
-          background:linear-gradient(to right, rgba(254, 0, 0, 1), rgba(6, 6, 6, 1));;
+          background:linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));;
           color: #fff;
           border: none;
           border-radius: 8px;
@@ -149,11 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
           transition: all 0.3s ease;
         }
         .back-btn:hover {
-          background: linear-gradient(to right, rgba(254, 0, 0, 1), rgba(6, 6, 6, 1));
           transform: scale(1.05);
-          box-shadow: 0 0 25px rgba(3, 3, 3, 1);
-
-          
+          box-shadow: 0 0 25px rgba(167, 30, 177, 1);
         }
       `;
       document.head.appendChild(style);
@@ -172,12 +184,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const card = document.createElement("div");
         card.classList.add("result-card");
         card.innerHTML = `
-          <h2>Imposter Revealed!</h2>
-          <p><strong>Imposter(s):</strong> ${imposterNames}</p>
-          <p><strong></strong> ${word}</p>
-        `;
+    <h2>Imposter Revealed!</h2>
+    <p><strong>Imposter(s):</strong> ${imposterNames}</p>
+    <p><strong></strong> ${word}</p>
+  `;
 
-        // Back button
+        // Back button in a separate container
+        const backContainer = document.createElement("div");
+        backContainer.style.display = "flex";
+        backContainer.style.justifyContent = "center";
+        backContainer.style.marginTop = "20px";
+
         const backBtn = document.createElement("button");
         backBtn.textContent = "Back";
         backBtn.classList.add("back-btn");
@@ -185,9 +202,12 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href = "/";
         });
 
-        card.appendChild(backBtn);
-        container.appendChild(card);
+        backContainer.appendChild(backBtn);
+
+        container.appendChild(card);         // append result card first
+        container.appendChild(backContainer); // append back button container separately
       });
+
 
       container.appendChild(startCard);
       container.appendChild(btn);
