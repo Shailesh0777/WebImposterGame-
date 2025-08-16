@@ -62,13 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     card.addEventListener("click", () => {
       if (!revealed) {
-        // Show imposter or civilian
         if (player.role.toLowerCase() === "imposter") {
-          roleText.innerText = "You are Imposter";
-          categoryText.innerText = player.displayText.replace("Category : ", "Category:\n "); // show category at bottom
+          // Get all imposters
+          const imposters = playersWithRoles.filter(p => p.role.toLowerCase() === "imposter");
+          const imposterNames = imposters.map(p => p.name).join(" and ");
+
+          roleText.innerText = `You are Imposter\n\nImposters: ${imposterNames}`;
+          categoryText.innerText = player.displayText.replace("Category : ", "Category:\n ");
         } else {
-          roleText.innerText = player.displayText.replace("Word : ", "The Word is  :\n "); // middle empty for civilian
-          categoryText.innerText = ""; // show word at bottom
+          roleText.innerText = player.displayText.replace("Word : ", "The Word is  :\n ");
+          categoryText.innerText = "";
         }
         revealed = true;
         card.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
@@ -78,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return card;
   }
 
+
   function showPlayer(index) {
     container.innerHTML = "";
 
@@ -85,25 +89,33 @@ document.addEventListener("DOMContentLoaded", () => {
       nextBtn.style.display = "none";
 
       // Create "Start round" card
-      const startCard = document.createElement("div");
-      startCard.classList.add("big-card");
-      startCard.style.background = "linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1))";
-      startCard.style.color = "white";
-      startCard.style.textAlign = "center";
-      startCard.style.display = "flex";
-      startCard.style.justifyContent = "center";
-      startCard.style.alignItems = "center";
-      startCard.style.height = "120px";
-      startCard.style.width = "300px";
-      startCard.style.fontSize = "20px";
-      startCard.style.marginBottom = "20px";
-      startCard.style.fontWeight = "600";
+      function createInfoCard(text) {
+        const card = document.createElement("div");
+        card.classList.add("big-card-createinfo");
+        card.style.background = "linear-gradient(to right, rgba(255, 0, 255, 1), rgba(85, 6, 58, 1))";
+        card.style.color = "white";
+        card.style.textAlign = "center";
+        card.style.display = "flex";
+        card.style.justifyContent = "center";
+        card.style.alignItems = "center";
+        card.style.height = "60px";
+        card.style.width = "300px";
+        card.style.fontSize = "20px";
+        card.style.margin = "20px 0px 20px 0px";
+        card.style.fontWeight = "600";
+        card.innerText = text;       
+        return card;
+      }
       const firstPlayerName = playersWithRoles[0]?.name || "Player 1";
-      startCard.innerText = `Start the round from "${firstPlayerName}" in clockwise direction`;
-      startCard.style.boxShadow = "box-shadow: 0 0 25px rgba(167, 30, 177, 1)";
-      startCard.style.padding = "100px 0px 100px 0px";
+      const startCard = createInfoCard(`Start the discussion from "${firstPlayerName}"`);
+      const secondCard = createInfoCard(`go in clockwise direction`);
+      const thirdCard = createInfoCard("Tip: Watch carefully how others describe!");
+      const fourthCard = createInfoCard("Be ready to vote!");
+      container.appendChild(startCard);
+      container.appendChild(secondCard);
+      container.appendChild(thirdCard);
+      container.appendChild(fourthCard);
       
-
       // Reveal Imposter button
       const btn = document.createElement("button");
       btn.innerText = "Reveal Imposter";
@@ -114,34 +126,18 @@ document.addEventListener("DOMContentLoaded", () => {
       // Glow effect from CSS
       const style = document.createElement("style");
       style.textContent = `
-        .revealimposter {
-          background-color: #ff3c3c;
-          color: white;
-          height: 75px
-          width:150px
-          padding: 15px 30px;
-          border: none;
-          border-radius: 10px;
-          font-size: 20px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-        .revealimposter:hover {
-        box-shadow: 0 0 25px rgba(167, 30, 177, 1);
-          transform: scale(1.05);
-        }
-
         .result-card {
           height: auto;
           width: auto;
-          padding: 30px 20px 30px 20px;
+          padding: 20px 20px 20px 20px;
           border-radius: 15px;
           background:linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
           text-align: center;
+           justify-content: center;
           font-family: Arial, sans-serif;
           transition: all 0.3s ease;
           border:none;
-          border-radius:10px
+          border-radius:20px
 
         }
         .result-card h2 {
@@ -162,6 +158,10 @@ document.addEventListener("DOMContentLoaded", () => {
           border-radius: 8px;
           cursor: pointer;
           transition: all 0.3s ease;
+          width: 120px;
+          height: 50px;
+          font-size:22px;
+          font-weight: bold;
         }
         .back-btn:hover {
           transform: scale(1.05);
@@ -172,7 +172,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       btn.addEventListener("click", () => {
         startCard.remove();
+        secondCard.remove();
+        thirdCard.remove();
+        fourthCard.remove();
         btn.remove();
+        
 
         // Get imposters and word
         const imposters = playersWithRoles.filter(p => p.role.toLowerCase() === "imposter");
@@ -183,11 +187,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Result card
         const card = document.createElement("div");
         card.classList.add("result-card");
-        card.innerHTML = `
-    <h2>Imposter Revealed!</h2>
-    <p><strong>Imposter(s):</strong> ${imposterNames}</p>
-    <p><strong></strong> ${word}</p>
-  `;
+   card.innerHTML = `
+  <h2 class="reveal-title">Imposter Revealed!</h2>
+  <p><strong class="label">Imposter(s):</strong> <span class="imposter-names">${imposterNames}</span></p>
+  <p><strong class="label"></strong> <span class="word-text">${word}</span></p>
+`;
+
 
         // Back button in a separate container
         const backContainer = document.createElement("div");
@@ -208,8 +213,6 @@ document.addEventListener("DOMContentLoaded", () => {
         container.appendChild(backContainer); // append back button container separately
       });
 
-
-      container.appendChild(startCard);
       container.appendChild(btn);
       return;
     }

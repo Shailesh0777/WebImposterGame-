@@ -6,14 +6,11 @@
   margin: 0;
 }
 
-:root {
-  --color-primary: #000000;
-}
 
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  background: var(--color-primary);
+  background: linear-gradient(to right, rgb(59, 5, 5), rgb(0, 0, 0));
   color: #fff;
   overflow-x: hidden;
 }
@@ -23,7 +20,6 @@ a{
   text-decoration: none;
   font-style: bold;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -31,22 +27,29 @@ a{
 }
 
 .main-header {
-  padding: 20px 0;
-  background: #000000
+  padding: 15px 0;
+  background: linear-gradient(to right, rgb(59, 5, 5), rgb(0, 0, 0));
 }
 
 .logo {
-  font-size: xx-large;
+  font-size: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+.logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 25px rgba(167, 30, 177, 1);
 }
 
 .main-header .container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  flex-wrap: wrap;
+  text-align: center;      /* Ensure text aligns center on smaller screens */
 }
 
 .main-header .logo {
-  font-size: 25px;
+  font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
@@ -61,7 +64,7 @@ a{
 }
 
 .big-card {
-  background: linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3));
+  background: linear-gradient(to right, rgba(255, 0, 255, 1), rgba(85, 6, 58, 1));
   padding: 10px;
   height: 220px;
   /* Default card height */
@@ -69,12 +72,28 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
+   border-radius: 20px ;
   transition: all 0.3s ease-in-out;
 }
-
 .big-card:hover {
-  box-shadow: 0 0 25px rgb(117, 100, 90);
+  box-shadow:0 0 25px rgba(167, 30, 177, 1);
   transform: scale(1.05);
+}
+
+.big-card-createinfo {
+  background: linear-gradient(to right, rgba(255, 0, 255, 1), rgba(85, 6, 58, 1));
+  padding: 10px;
+  height: 60px;
+  /* Default card height */
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  border-radius: 20px ;
+}
+.big-card-createinfo:hover {
+  box-shadow:0 0 25px rgba(167, 30, 177, 1);
 }
 
 .card-title {
@@ -87,19 +106,6 @@ a{
   justify-content: center;
   align-items: center;
   height: 80vh;
-}
-
-/* Big card style */
-.big-card {
-  width: 300px;
-  height: 400px;
-  background: linear-gradient(to right, rgb(247, 134, 5), rgb(113, 31, 3));
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  text-align: center;
 }
 
 .big-card .player-name {
@@ -149,7 +155,7 @@ a{
 .next-button:hover {
   cursor: pointer;
   transform: scale(1.05);
- box-shadow: 0 0 25px rgb(117, 100, 90);
+ box-shadow:0 0 25px rgba(167, 30, 177, 1);
 }
 
 .next-button:hover>div {
@@ -182,7 +188,6 @@ a{
 
 .revealimposter {
   background: linear-gradient(to right, rgba(247, 5, 211, 1), rgba(85, 6, 58, 1));
-  box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.2);
   color: white;
   border: none;
   border-radius: 12px;
@@ -191,10 +196,38 @@ a{
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 0 8px rgb(153, 8, 148);
   transition: box-shadow 0.3s ease-in-out;
 }
 
 .revealimposter:hover {
-box-shadow: 0 0 25px rgb(117, 100, 90);
+ box-shadow:0 0 25px rgba(167, 30, 177, 1);
+transform: scale(1.05);
+}
+
+
+.reveal-title {
+  font-size: 28px;
+  color: #ff004f;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.label {
+  font-weight: bold;
+  color: #fff; /* Or something subtle */
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.imposter-names {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+
+.word-text {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
 }

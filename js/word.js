@@ -11,10 +11,10 @@ const words_with_hints = {
 "microsoft": "brand",
 "coca-cola": "brand",
 "pepsi": "brand",
-"hp": "brand",
+"HP": "brand",
 "dell": "brand",
 "lenovo": "brand",
-"lg": "brand",
+"LG": "brand",
 
 // vehicle
 "train": "vehicle",
