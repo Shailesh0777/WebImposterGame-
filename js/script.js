@@ -1,5 +1,3 @@
-// <!-- this is my index .js -->
-
 let currentPlayerCount = 0;
 let selectedImposterCount = 0; // how many imposters to assign
 
@@ -17,7 +15,6 @@ function createPlayerCardWithName(name, number) {
   const card = document.createElement("div");
   card.className = "card";
   card.onclick = function (e) {
-    // Prevent renaming if delete button clicked
     if (!e.target.classList.contains("delete-btn")) {
       convertToInput(this);
     }
@@ -26,12 +23,11 @@ function createPlayerCardWithName(name, number) {
   const cardBody = document.createElement("div");
   cardBody.className = "card-body";
 
-  // Delete button
   const deleteBtn = document.createElement("button");
   deleteBtn.className = "delete-btn";
   deleteBtn.innerHTML = "&times;";
   deleteBtn.onclick = function (e) {
-    e.stopPropagation(); // prevent card click
+    e.stopPropagation();
     card.remove();
     savePlayerNamesToLocalStorage();
     currentPlayerCount--;
@@ -73,7 +69,6 @@ function addNewPlayerCard() {
   const cardBody = document.createElement("div");
   cardBody.className = "card-body";
 
-  // Delete button
   const deleteBtn = document.createElement("button");
   deleteBtn.className = "delete-btn";
   deleteBtn.innerHTML = "&times;";
@@ -102,7 +97,7 @@ function addNewPlayerCard() {
 /* ====== Convert card title to input field for editing ====== */
 function convertToInput(cardElement) {
   const title = cardElement.querySelector(".card-title");
-  if (title.querySelector("input")) return; // Prevent multiple inputs
+  if (title.querySelector("input")) return;
 
   const currentText = title.innerText.trim();
   const input = document.createElement("input");
@@ -149,13 +144,12 @@ function loadPlayerNamesFromLocalStorage() {
   currentPlayerCount = saved.length;
 
   const container = document.getElementById("player-cards");
-  container.innerHTML = ""; // clear all cards
+  container.innerHTML = "";
 
   saved.forEach((name, i) => {
     createPlayerCardWithName(name, i + 1);
   });
 
-  // Add the + Add Player card
   const addCard = document.createElement("div");
   addCard.className = "card";
   addCard.id = "add-player-card";
@@ -163,6 +157,7 @@ function loadPlayerNamesFromLocalStorage() {
   addCard.innerHTML = `<div class="card-body"><h5 class="card-title">+ Add Player</h5></div>`;
   container.appendChild(addCard);
 }
+
 /* ====== Imposter selection logic ====== */
 document.querySelectorAll(".imposter-card").forEach(card => {
   card.addEventListener("click", function () {
@@ -197,23 +192,21 @@ function goToNextPage() {
     return;
   }
 
-  // Shuffle function
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+  // ✅ Imposters are assigned randomly, but the order of players remains as entered
+  const imposterIndices = [];
+  while (imposterIndices.length < selectedImposterCount) {
+    const randIndex = Math.floor(Math.random() * names.length);
+    if (!imposterIndices.includes(randIndex)) {
+      imposterIndices.push(randIndex);
     }
   }
 
-  shuffle(names);
-  // Assign roles
   let playersWithRoles = names.map((name, index) => ({
     name: name,
-    role: index < selectedImposterCount ? "Imposter" : "Civilian"
+    role: imposterIndices.includes(index) ? "Imposter" : "Civilian"
   }));
 
-  shuffle(playersWithRoles);
-
+  // ✅ Do NOT shuffle the array - keep original order for reveal
   localStorage.setItem("players", JSON.stringify(playersWithRoles));
 
   window.location.href = "roles.html";
