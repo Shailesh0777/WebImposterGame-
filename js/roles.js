@@ -106,8 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
         card.innerText = text;       
         return card;
       }
-      const firstPlayerName = playersWithRoles[0]?.name || "Player 1";
-      const startCard = createInfoCard(`Start the discussion from "${firstPlayerName}"`);
+   const randomIndex = Math.floor(Math.random() * playersWithRoles.length);
+const randomPlayerName = playersWithRoles[randomIndex]?.name || "Player 1";
+// Create the info card using the random player
+const startCard = createInfoCard(`Start the discussion from "${randomPlayerName}"`);
       const secondCard = createInfoCard(`go in clockwise direction`);
       const thirdCard = createInfoCard("Tip: Watch carefully how others describe!");
       const fourthCard = createInfoCard("Be ready to vote!");

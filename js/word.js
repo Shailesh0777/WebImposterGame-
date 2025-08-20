@@ -50,7 +50,7 @@ const words_with_hints = {
   "fish": "Scales",
   "pasta": "Strands",
   "steak": "Marbled",
-  "apple" : "doctor",
+  "apple": "doctor",
 
   // tools
   "hammer": "Impact",
@@ -133,12 +133,12 @@ const words_with_hints = {
   "dolphin": "Echo",
 
   // countries
-  "nepal": "Himalaya",
-  "india": "Spices",
-  "china": "GreatWall",
+  "nepal": "Nipple",
+  "india": "Dirty",
+  "china": "Eyes",
   "japan": "Sushi",
   "usa": "Stars",
-  "canada": "Maple",
+  "canada": "truck",
   "brazil": "Carnival",
   "australia": "Outback",
   "germany": "Brew",
@@ -150,6 +150,18 @@ const words_with_hints = {
   "mexico": "Tequila",
   "egypt": "Pyramids",
   "greece": "Olympus",
+
+  // food & beverages
+  "coffee": "Brew",
+  "tea": "Steep",
+  "smoothie": "Blend",
+  "chocolate": "Sweet",
+  "cheese": "Melt",
+  "yogurt": "Creamy",
+  "pancake": "Flip",
+  "waffle": "Grid",
+  "noodle": "Twist",
+  "icecream": "Cold",
 
   // sports
   "football": "Pitch",
@@ -163,11 +175,11 @@ const words_with_hints = {
   "golf": "Putter",
   "swimming": "Stroke",
   "boxing": "Ring",
-  "table tennis": "Paddle",
-  "wrestling": "Grapple",
+  "table tennis": "ping",
+  "wrestling": "Fake",
   "baseball": "Diamond",
   "skating": "Blade",
-  "archery": "Arrow",
+  "archery": "feather",
   "cycling": "Pedal",
 
   // movies
@@ -175,10 +187,10 @@ const words_with_hints = {
   "titanic": "Iceberg",
   "inception": "Dreams",
   "avengers": "Assemble",
-  "jurassic park": "Dinosaurs",
+  "jurassic park": "jungle",
   "frozen": "Snow",
   "the godfather": "Don",
-  "black panther": "Vibranium",
+  "black panther": "Wild",
   "iron man": "Suit",
   "interstellar": "Space",
   "the dark knight": "Gotham",
@@ -206,7 +218,127 @@ const words_with_hints = {
   "tongs": "Grip",
   "tray": "Carry",
   "strainer": "Sieve",
-  "grater": "Shred"
+  "grater": "Shred",
+
+  // technology
+  "drone": "Fly",
+  "smartwatch": "Time",
+  "vr headset": "Immersion",
+  "tablet": "Touch",
+  "camera": "Capture",
+  "projector": "Display",
+  "printer": "Print",
+  "speaker system": "Boom",
+  "microphone": "Voice",
+  "router": "Signal",
+
+  // fashion & accessories
+  "scarf": "Wrap",
+  "hat": "Shade",
+  "belt": "Loop",
+  "sunglasses": "Shade",
+  "watch": "Tick",
+  "ring": "Shine",
+  "bracelet": "Link",
+  "earrings": "Dangly",
+  "handbag": "Carry",
+  "wallet": "Cash",
+
+  // nature
+  "sun": "Shine",
+  "moon": "Glow",
+  "star": "Twinkle",
+  "rain": "Drop",
+  "snow": "Flake",
+  "wind": "Breeze",
+  "mountain": "Peak",
+  "river": "Flow",
+  "forest": "Trees",
+  "desert": "Sand",
+
+  // entertainment
+  "piano": "Keys",
+  "guitar": "Strum",
+  "violin": "Bow",
+  "drum": "Beat",
+  "flute": "Air",
+  "saxophone": "Jazz",
+  "trumpet": "Brass",
+  "harmonica": "Blow",
+  "microphone": "Sing",
+  "turntable": "Spin",
+
+  // space & science
+  "planet": "Orbit",
+  "star": "Twinkle",
+  "galaxy": "Spiral",
+  "asteroid": "Rock",
+  "comet": "Tail",
+  "black hole": "Void",
+  "rocket": "Launch",
+  "spacesuit": "Suit",
+  "telescope": "Look",
+  "satellite": "Orbit",
+
+  // emotions & feelings
+  "love": "Heart",
+  "anger": "Fire",
+  "joy": "Smile",
+  "sadness": "Tear",
+  "fear": "Shiver",
+  "surprise": "Shock",
+  "hope": "Light",
+  "pride": "Chest",
+  "envy": "Green",
+  "calm": "Breeze",
+
+  // hobbies
+  "painting": "Brush",
+  "drawing": "Sketch",
+  "writing": "Words",
+  "photography": "Click",
+  "gaming": "Play",
+  "fishing": "Catch",
+  "hiking": "Trail",
+  "gardening": "Grow",
+  "baking": "Sweet",
+  "knitting": "Stitch",
+
+  // fantasy & mythical
+  "dragon": "Fire",
+  "unicorn": "Horn",
+  "phoenix": "Rebirth",
+  "griffin": "Wing",
+  "mermaid": "Tail",
+  "fairy": "Magic",
+  "wizard": "Spell",
+  "giant": "Tower",
+  "troll": "Bridge",
+  "vampire": "Fang",
+
+  // emotions & personality traits
+  "curious": "Ask",
+  "brave": "Fearless",
+  "smart": "Brain",
+  "creative": "Idea",
+  "lazy": "Sleep",
+  "friendly": "Smile",
+  "kind": "Heart",
+  "cheerful": "Joy",
+  "mysterious": "Secret",
+  "honest": "Truth",
+
+  // random objects & everyday items
+  "umbrella": "Rain",
+  "clock": "Tick",
+  "chair": "Sit",
+  "window": "View",
+  "door": "Enter",
+  "lamp": "Glow",
+  "carpet": "Soft",
+  "pillow": "Rest",
+  "blanket": "Warm",
+
 };
 
 
